@@ -1,0 +1,30 @@
+{
+  "polygon_mumbai": [
+    {
+      "chainId": "0x13881",
+      "chainName": "Polygon Mumbai",
+      "nativeCurrency": {
+        "name": "MATIC",
+        "symbol": "MATIC",
+        "decimals": 18
+      },
+      "rpcUrls": ["https://rpc-mumbai.maticvigil.com/"],
+      "blockExplorerUrls": ["https://mumbai.polygonscan.com"],
+      "iconUrls": ["https://polygonscan.com/images/svg/brands/polygon.svg?v=1.3"]
+    }
+  ],
+  "polygon_mainnet": [
+    {
+      "chainId": "0x89",
+      "chainName": "Polygon Mainnet",
+      "nativeCurrency": {
+        "name": "Matic",
+        "symbol": "MATIC",
+        "decimals": 18
+      },
+      "rpcUrls": ["https://polygon-rpc.com/"],
+      "blockExplorerUrls": ["https://polygonscan.com/"],
+      "iconUrls": ["https://polygonscan.com/images/svg/brands/polygon.svg?v=1.3"]
+    }
+  ]
+}

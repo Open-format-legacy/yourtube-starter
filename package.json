@@ -1,0 +1,32 @@
+{
+  "name": "yourtube-starter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "bnc-onboard": "^1.38.2",
+    "graphql": "^16.3.0",
+    "graphql-request": "^4.0.0",
+    "next": "12.1.0",
+    "nft.storage": "^6.0.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-hook-form": "^7.27.1",
+    "react-player": "^2.9.0",
+    "zustand": "^3.7.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.0",
+    "@tailwindcss/forms": "^0.5.0",
+    "autoprefixer": "^10.4.2",
+    "eslint": "8.10.0",
+    "eslint-config-next": "12.1.0",
+    "postcss": "^8.4.7",
+    "tailwindcss": "^3.0.23"
+  }
+}
