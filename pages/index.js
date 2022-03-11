@@ -46,7 +46,11 @@ export default function Home() {
   return (
     <div>
       <Header />
-      {videos && <VideoGrid videos={videos} />}
+      {videos ? (
+        <VideoGrid videos={videos} />
+      ) : (
+        <p>No videos found.</p>
+      )}
     </div>
   );
 }

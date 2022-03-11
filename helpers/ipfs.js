@@ -17,6 +17,8 @@ export async function uploadToIPFS(data) {
  * with it's own IPFS CID linking back to the generated metadata.json.
  */
 export function buildMetadata(name, description, image, video) {
+  const FACTORY_ID = process.env.NEXT_PUBLIC_FACTORY_ID;
+
   const data = {
     name,
     description,
@@ -27,7 +29,7 @@ export function buildMetadata(name, description, image, video) {
       type: video.type,
     }),
     release_type: "video",
-    factory_id: "c9f7f4d1-bc0e-4533-a02d-5fbf5b052748",
+    factory_id: FACTORY_ID,
   };
 
   return data;

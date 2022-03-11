@@ -14,6 +14,7 @@ export default function NewVideoPage() {
   } = useForm();
   const { wallet, address } = useWalletStore();
   const [isLoading, setLoading] = useState(false);
+  const [txSuccessful, setTxSuccessful] = useState(false);
 
   async function createVideo(data) {
     setLoading(true);
@@ -29,8 +30,12 @@ export default function NewVideoPage() {
       video[0]
     );
 
+    console.log({ metadata });
+
     // Upload the metdata object returned from the buildMetadata function to IPFS
     const ipfsData = await uploadToIPFS(metadata);
+
+    console.log({ ipfsData });
 
     // If the user has connected their wallet, continue.
     if (wallet?.provider) {
@@ -66,6 +71,7 @@ export default function NewVideoPage() {
         // Once, the transaction has been confirmed in Metamask, we wait for it to be successful.
         await contract.deployTransaction.wait();
         setLoading(false);
+        setTxSuccessful(true);
       } catch (e) {
         setLoading(false);
         console.log({ e });
@@ -77,7 +83,7 @@ export default function NewVideoPage() {
     <div>
       <Header />
       <form
-        className="flex flex-col space-y-2"
+        className="flex flex-col space-y-5"
         onSubmit={handleSubmit(createVideo)}
       >
         <input
@@ -114,13 +120,16 @@ export default function NewVideoPage() {
         {errors.video && (
           <p className="text-red-500">Video is required.</p>
         )}
-        <Button
-          isLoading={isLoading}
-          disabled={isLoading}
-          type="submit"
-        >
-          Submit
-        </Button>
+        <div>
+          <Button
+            isLoading={isLoading}
+            disabled={isLoading || !address}
+            type="submit"
+          >
+            {txSuccessful ? "Success 🎉" : "Submit"}
+          </Button>
+          {!address && <p>Please connect your wallet.</p>}
+        </div>
       </form>
     </div>
   );
