@@ -23,6 +23,9 @@ export default function Home() {
             key
             value
           }
+          creator {
+            id
+          }
         }
       }
     `;
