@@ -1,5 +1,3 @@
-import classNames from "classnames";
-
 export default function Avatar({ creator, index }) {
   // https://stackoverflow.com/a/69191922/3438834
   function getBackgroundColor(stringInput) {
@@ -22,9 +20,9 @@ export default function Avatar({ creator, index }) {
   return (
     <div
       style={{ borderColor: getBackgroundColor(creator) }}
-      className={classNames(
+      className={
         "h-8 w-8 rounded-full border-2 font-semibold flex-col shadow-lg flex items-center justify-center p-8 text-xs"
-      )}
+      }
     >
       <span>{creator.substring(0, 4)}</span>
       <span>{creator.slice(-4)}</span>
