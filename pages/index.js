@@ -7,7 +7,7 @@ export default function Home() {
   const { address } = useWalletStore();
   const [videos, setVideos] = useState();
 
-  useEffect(fetchVideos, [address]);
+  useEffect(fetchVideos, []);
 
   const FACTORY_ID = process.env.NEXT_PUBLIC_FACTORY_ID;
 
@@ -17,30 +17,28 @@ export default function Home() {
     );
 
   async function fetchVideos() {
-    if (address) {
-      const query = gql`
-        query ($factory_id: String!) {
-          mediaItems(where: { factory_id: $factory_id }) {
-            id
-            metadata {
-              key
-              value
-            }
+    const query = gql`
+      query ($factory_id: String!) {
+        mediaItems(where: { factory_id: $factory_id }) {
+          id
+          metadata {
+            key
+            value
           }
         }
-      `;
+      }
+    `;
 
-      await request(
-        "https://api.thegraph.com/subgraphs/name/tinypell3ts/music-factory",
-        query,
-        { factory_id: FACTORY_ID }
-        // { release_type: "video" }
-      ).then((data) => {
-        if (data.mediaItems?.length) {
-          setVideos(data.mediaItems);
-        }
-      });
-    }
+    await request(
+      "https://api.thegraph.com/subgraphs/name/tinypell3ts/music-factory",
+      query,
+      { factory_id: FACTORY_ID }
+      // { release_type: "video" }
+    ).then((data) => {
+      if (data.mediaItems?.length) {
+        setVideos(data.mediaItems);
+      }
+    });
   }
 
   return (
