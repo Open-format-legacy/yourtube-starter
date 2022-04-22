@@ -1,10 +1,8 @@
 import { gql, request } from "graphql-request";
 import { useEffect, useState } from "react";
 import { Header, VideoGrid } from "../components";
-import { useWalletStore } from "../stores";
 
 export default function Home() {
-  const { address } = useWalletStore();
   const [videos, setVideos] = useState();
 
   useEffect(fetchVideos, []);

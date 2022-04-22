@@ -1,4 +1,4 @@
-import { VideoPlayer } from "../components";
+import { Avatar, VideoPlayer } from "../components";
 
 export default function VideoGrid({ videos }) {
   if (!videos?.length) return;
@@ -48,12 +48,15 @@ function VideoItem({ video }) {
             previewImage={transformURL(previewImage)}
           />
         </div>
-        <div className="space-y-2">
-          <div className="text-lg leading-6 font-medium space-y-1">
-            {name}
-          </div>
-          <div className="text-lg leading-6 font-medium space-y-1">
+        <div className="space-x-2 flex items-center">
+          <Avatar creator={video.creator.id} />
+          <div>
+            <div className="text-lg leading-6 font-medium space-y-1">
+              {name}
+            </div>
+            {/* <div className="text-lg leading-6 font-medium space-y-1">
             {description}
+          </div> */}
           </div>
         </div>
       </div>
